@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F7537B41A8C1E0C007D9823 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7537B31A8C1E0C007D9823 /* MapViewController.m */; };
+		2F7537B61A8C1E31007D9823 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7537B51A8C1E31007D9823 /* MapKit.framework */; };
+		2F7537B81A8C1E3A007D9823 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F7537B71A8C1E3A007D9823 /* CoreLocation.framework */; };
 		2F821B101A897C420016434D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F821B0F1A897C420016434D /* main.m */; };
 		2F821B131A897C420016434D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F821B121A897C420016434D /* AppDelegate.m */; };
-		2F821B161A897C420016434D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F821B151A897C420016434D /* ViewController.m */; };
+		2F821B161A897C420016434D /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F821B151A897C420016434D /* ListViewController.m */; };
 		2F821B191A897C420016434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F821B171A897C420016434D /* Main.storyboard */; };
 		2F821B1B1A897C420016434D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F821B1A1A897C420016434D /* Images.xcassets */; };
 		2F821B1E1A897C420016434D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F821B1C1A897C420016434D /* LaunchScreen.xib */; };
@@ -27,13 +30,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F7537B21A8C1E0C007D9823 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		2F7537B31A8C1E0C007D9823 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		2F7537B51A8C1E31007D9823 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2F7537B71A8C1E3A007D9823 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2F821B0A1A897C420016434D /* BlocSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlocSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F821B0E1A897C420016434D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F821B0F1A897C420016434D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F821B111A897C420016434D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F821B121A897C420016434D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2F821B141A897C420016434D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2F821B151A897C420016434D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2F821B141A897C420016434D /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		2F821B151A897C420016434D /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		2F821B181A897C420016434D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F821B1A1A897C420016434D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2F821B1D1A897C420016434D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -47,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7537B81A8C1E3A007D9823 /* CoreLocation.framework in Frameworks */,
+				2F7537B61A8C1E31007D9823 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,8 @@
 		2F821B011A897C420016434D = {
 			isa = PBXGroup;
 			children = (
+				2F7537B71A8C1E3A007D9823 /* CoreLocation.framework */,
+				2F7537B51A8C1E31007D9823 /* MapKit.framework */,
 				2F821B0C1A897C420016434D /* BlocSpot */,
 				2F821B261A897C420016434D /* BlocSpotTests */,
 				2F821B0B1A897C420016434D /* Products */,
@@ -83,8 +94,10 @@
 			children = (
 				2F821B111A897C420016434D /* AppDelegate.h */,
 				2F821B121A897C420016434D /* AppDelegate.m */,
-				2F821B141A897C420016434D /* ViewController.h */,
-				2F821B151A897C420016434D /* ViewController.m */,
+				2F821B141A897C420016434D /* ListViewController.h */,
+				2F821B151A897C420016434D /* ListViewController.m */,
+				2F7537B21A8C1E0C007D9823 /* MapViewController.h */,
+				2F7537B31A8C1E0C007D9823 /* MapViewController.m */,
 				2F821B171A897C420016434D /* Main.storyboard */,
 				2F821B1A1A897C420016434D /* Images.xcassets */,
 				2F821B1C1A897C420016434D /* LaunchScreen.xib */,
@@ -219,9 +232,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F821B161A897C420016434D /* ViewController.m in Sources */,
+				2F821B161A897C420016434D /* ListViewController.m in Sources */,
 				2F821B131A897C420016434D /* AppDelegate.m in Sources */,
 				2F821B101A897C420016434D /* main.m in Sources */,
+				2F7537B41A8C1E0C007D9823 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +428,7 @@
 				2F821B2F1A897C420016434D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F821B301A897C420016434D /* Build configuration list for PBXNativeTarget "BlocSpotTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +437,7 @@
 				2F821B321A897C420016434D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
