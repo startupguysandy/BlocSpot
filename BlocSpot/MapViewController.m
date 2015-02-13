@@ -7,7 +7,6 @@
 //
 
 #import "MapViewController.h"
-
 #import <CoreLocation/CoreLocation.h>
 
 @interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
@@ -19,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Set up locationManager
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -30,8 +29,10 @@
         [self.locationManager requestWhenInUseAuthorization];
     }
     
+	// Start Updating location
     [self.locationManager startUpdatingLocation];
     
+    // Set the mapView delegate as itself
     self.mapView.delegate = self;
 }
 
@@ -41,17 +42,41 @@
 
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     
-    MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
-    
-    request.naturalLanguageQuery = @"Coffee";
+    // Create new search request
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Bank";
     request.region = region;
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
+    // Initiate new search
     MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:request];
-    
     [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        NSMutableArray *annotations = [NSMutableArray array];
+        
+        [response.mapItems enumerateObjectsUsingBlock:^(MKMapItem *item, NSUInteger idx, BOOL *stop) {
+            
+            // if we already have an annotation for this MKMapItem,
+            // just return because you don't have to add it again
+            
+            for (id<MKAnnotation>annotation in mapView.annotations)
+            {
+                if (annotation.coordinate.latitude == item.placemark.coordinate.latitude &&
+                    annotation.coordinate.longitude == item.placemark.coordinate.longitude)
+                {
+                    return;
+                }
+            }
+            
+            // otherwise, add it to our list of new annotations
+            // ideally, I'd suggest a custom annotation or MKPinAnnotation, but I want to keep this example simple
+            [annotations addObject:item.placemark];
+        }];
+        
+        [mapView addAnnotations:annotations];
         
         if (error != nil) {
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Map Error",nil)
@@ -70,9 +95,6 @@
         }
         
         _results = response;
-        NSLog(@"%@", _results);
-        
-//        [self.searchDisplayController.searchResultsTableView reloadData];
     }];
 }
 
