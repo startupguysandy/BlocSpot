@@ -12,6 +12,7 @@
 
 @interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) MKLocalSearchResponse *results;
 @end
 
 @implementation MapViewController
@@ -45,11 +46,33 @@
     request.naturalLanguageQuery = @"Coffee";
     request.region = region;
     
-    MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:request];
     
-
-    [search startWithCompletionHandler:^(MKLocalSearchResponse* response, NSError* error){
-        // Need ti perform the actual search here
+    [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        if (error != nil) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Map Error",nil)
+                                        message:[error localizedDescription]
+                                       delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] show];
+            return;
+        }
+        
+        if ([response.mapItems count] == 0) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No Results",nil)
+                                        message:nil
+                                       delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] show];
+            return;
+        }
+        
+        _results = response;
+        NSLog(@"%@", _results);
+        
+//        [self.searchDisplayController.searchResultsTableView reloadData];
     }];
 }
 

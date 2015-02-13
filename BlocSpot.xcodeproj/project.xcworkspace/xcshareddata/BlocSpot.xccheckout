@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BFD695AD-1996-4ED7-97DF-802D4E653B79</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BlocSpot</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2866B209E2293E196A40063E72BB0D0EF9B5BDFD</key>
+		<string>https://github.com/startupguysandy/BlocSpot.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BlocSpot.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2866B209E2293E196A40063E72BB0D0EF9B5BDFD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/startupguysandy/BlocSpot.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2866B209E2293E196A40063E72BB0D0EF9B5BDFD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2866B209E2293E196A40063E72BB0D0EF9B5BDFD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BlocSpot</string>
+		</dict>
+	</array>
+</dict>
+</plist>
