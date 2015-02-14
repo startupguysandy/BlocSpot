@@ -17,6 +17,7 @@
 		2F821B1B1A897C420016434D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F821B1A1A897C420016434D /* Images.xcassets */; };
 		2F821B1E1A897C420016434D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F821B1C1A897C420016434D /* LaunchScreen.xib */; };
 		2F821B2A1A897C420016434D /* BlocSpotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F821B291A897C420016434D /* BlocSpotTests.m */; };
+		2FA1E9DF1A8F40ED000ECC4C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1E9DE1A8F40ED000ECC4C /* SearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		2F821B231A897C420016434D /* BlocSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F821B281A897C420016434D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F821B291A897C420016434D /* BlocSpotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocSpotTests.m; sourceTree = "<group>"; };
+		2FA1E9DD1A8F40ED000ECC4C /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		2FA1E9DE1A8F40ED000ECC4C /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				2F821B151A897C420016434D /* ListViewController.m */,
 				2F7537B21A8C1E0C007D9823 /* MapViewController.h */,
 				2F7537B31A8C1E0C007D9823 /* MapViewController.m */,
+				2FA1E9DD1A8F40ED000ECC4C /* SearchViewController.h */,
+				2FA1E9DE1A8F40ED000ECC4C /* SearchViewController.m */,
 				2F821B171A897C420016434D /* Main.storyboard */,
 				2F821B1A1A897C420016434D /* Images.xcassets */,
 				2F821B1C1A897C420016434D /* LaunchScreen.xib */,
@@ -234,6 +239,7 @@
 			files = (
 				2F821B161A897C420016434D /* ListViewController.m in Sources */,
 				2F821B131A897C420016434D /* AppDelegate.m in Sources */,
+				2FA1E9DF1A8F40ED000ECC4C /* SearchViewController.m in Sources */,
 				2F821B101A897C420016434D /* main.m in Sources */,
 				2F7537B41A8C1E0C007D9823 /* MapViewController.m in Sources */,
 			);

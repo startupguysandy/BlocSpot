@@ -47,8 +47,8 @@
     */
     // Create new search request
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"Bank";
-    request.region = region;
+    request.naturalLanguageQuery = @"Coffee";
+    request.region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 2000, 2000);
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
