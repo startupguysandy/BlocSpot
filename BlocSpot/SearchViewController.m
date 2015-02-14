@@ -7,9 +7,10 @@
 //
 
 #import "SearchViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface SearchViewController ()
-
+@interface SearchViewController () <CLLocationManagerDelegate>
+@property (strong, nonatomic) MKLocalSearchResponse *results;
 @end
 
 @implementation SearchViewController
@@ -18,6 +19,62 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+}
+
+- (void) searchRequest: (NSString *) searchInfo {
+    // Create new search request
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Coffee";
+    request.region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 2000, 2000);
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    // Initiate new search
+    MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:request];
+    
+    [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        NSMutableArray *annotations = [NSMutableArray array];
+        
+        [response.mapItems enumerateObjectsUsingBlock:^(MKMapItem *item, NSUInteger idx, BOOL *stop)
+         {
+             // If we already have an annotation for this MKMapItem, just return because we don't have to add it again
+             for (id<MKAnnotation>annotation in mapView.annotations)
+             {
+                 if (annotation.coordinate.latitude == item.placemark.coordinate.latitude &&
+                     annotation.coordinate.longitude == item.placemark.coordinate.longitude)
+                 {
+                     return;
+                 }
+             }
+             
+             // Otherwise, add it to our list of new annotations. We need to create custom icons here.
+             [annotations addObject:item.placemark];
+         }];
+        
+        [mapView addAnnotations:annotations];
+        
+        // Edge cases
+        if (error != nil) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Map Error",nil)
+                                        message:[error localizedDescription]
+                                       delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] show];
+            return;
+        }
+        
+        if ([response.mapItems count] == 0) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No Results",nil)
+                                        message:nil
+                                       delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil] show];
+            return;
+        }
+        
+        // Add the response we have to the results variable
+        _results = response;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

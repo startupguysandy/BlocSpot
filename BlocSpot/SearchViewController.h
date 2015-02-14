@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController : UIViewController <MKMapViewDelegate>
 
 @end
