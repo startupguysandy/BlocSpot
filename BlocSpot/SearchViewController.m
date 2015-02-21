@@ -10,8 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface SearchViewController () <CLLocationManagerDelegate>
+
 @property (strong, nonatomic) MKLocalSearchResponse *results;
 @property (strong, nonatomic) MKUserLocation *userLocation;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+
 @end
 
 @implementation SearchViewController
@@ -20,9 +25,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"Loaded search view!");
+
 }
 
-- (void) searchRequest: (NSString *) searchInfo {
+- (void) searchRequest:(NSString *) searchInfo {
     // Create new search request
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = @"Coffee";
@@ -63,8 +69,41 @@
         
         // Add the response we have to the results variable
         _results = response;
+        
+        [self.tableView reloadData];
     }];
 }
+
+#pragma mark - Search Bar Delegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    NSString *searchQuery = searchBar.text;
+    [self searchRequest:searchQuery];
+}
+
+#pragma mark - Table View Data Source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.results.mapItems.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    NSInteger row = indexPath.row;
+    
+    MKMapItem *item = self.results.mapItems[row];
+    
+    cell.textLabel.text = item.name;
+    
+    return cell;
+}
+
+#pragma mark - Memory Warnings
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
