@@ -69,6 +69,8 @@
         
         // Add the response we have to the results variable
         _results = response;
+        
+        [self.tableView reloadData];
     }];
 }
 
@@ -83,6 +85,23 @@
     [self searchRequest:searchQuery];
 }
 
+#pragma mark - Table View Data Source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.results.mapItems.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    NSInteger row = indexPath.row;
+    
+    MKMapItem *item = self.results.mapItems[row];
+    
+    cell.textLabel.text = item.name;
+    
+    return cell;
+}
 
 #pragma mark - Memory Warnings
 
