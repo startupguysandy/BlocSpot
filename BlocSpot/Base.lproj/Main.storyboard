@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mxo-85-0Sb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mxo-85-0Sb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -43,12 +43,12 @@
         <!--Search-->
         <scene sceneID="5pG-1C-HxD">
             <objects>
-                <viewController id="0v9-rI-fcc" sceneMemberID="viewController">
+                <viewController id="0v9-rI-fcc" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="51t-Tt-9aM"/>
                         <viewControllerLayoutGuide type="bottom" id="KqO-Ok-zsR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KWn-dO-dme">
+                    <view key="view" contentMode="scaleToFill" id="KWn-dO-dme" customClass="Se">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
