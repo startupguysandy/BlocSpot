@@ -11,6 +11,7 @@
 
 @interface SearchViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic) MKLocalSearchResponse *results;
+@property (strong, nonatomic) MKUserLocation *userLocation;
 @end
 
 @implementation SearchViewController
@@ -18,14 +19,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSLog(@"Loaded search view!");
 }
 
 - (void) searchRequest: (NSString *) searchInfo {
     // Create new search request
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = @"Coffee";
-    request.region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 2000, 2000);
+    
+    /*
+      Need to make sure we have permission to use their location here
+    */
+    request.region = MKCoordinateRegionMakeWithDistance(_userLocation.location.coordinate, 2000, 2000);
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -35,25 +40,9 @@
     [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
-        NSMutableArray *annotations = [NSMutableArray array];
+        self.results = response;
         
-        [response.mapItems enumerateObjectsUsingBlock:^(MKMapItem *item, NSUInteger idx, BOOL *stop)
-         {
-             // If we already have an annotation for this MKMapItem, just return because we don't have to add it again
-             for (id<MKAnnotation>annotation in mapView.annotations)
-             {
-                 if (annotation.coordinate.latitude == item.placemark.coordinate.latitude &&
-                     annotation.coordinate.longitude == item.placemark.coordinate.longitude)
-                 {
-                     return;
-                 }
-             }
-             
-             // Otherwise, add it to our list of new annotations. We need to create custom icons here.
-             [annotations addObject:item.placemark];
-         }];
-        
-        [mapView addAnnotations:annotations];
+        // [self.tblView reloadData]
         
         // Edge cases
         if (error != nil) {

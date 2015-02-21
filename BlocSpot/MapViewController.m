@@ -33,6 +33,7 @@
     
     // Set the mapView delegate as itself
     self.mapView.delegate = self;
+    NSLog(@"Loaded MapView");
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation

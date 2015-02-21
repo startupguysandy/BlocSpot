@@ -54,6 +54,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="sgM-1H-HTL"/>
+                    <connections>
+                        <outlet property="view" destination="KWn-dO-dme" id="HBW-LV-kxm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPY-xh-Ck2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,7 +94,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="YVS-hT-nm7" id="j4c-gG-1le"/>
+                        <outlet property="mapView" destination="YVS-hT-nm7" id="bEN-fe-diF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aiy-uX-auu" userLabel="First Responder" sceneMemberID="firstResponder"/>
