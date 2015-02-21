@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface SearchViewController : UIViewController <MKMapViewDelegate>
+@interface SearchViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate>
 
 @end
