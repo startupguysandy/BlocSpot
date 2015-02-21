@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mxo-85-0Sb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mxo-85-0Sb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -34,7 +34,11 @@
                                 <segue destination="TUK-6Y-ACe" kind="show" id="oM6-MP-8KJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="bSg-dA-YK4"/>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="bSg-dA-YK4">
+                            <connections>
+                                <segue destination="0v9-rI-fcc" kind="show" id="B4Z-11-0HW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -49,18 +53,18 @@
                         <viewControllerLayoutGuide type="top" id="51t-Tt-9aM"/>
                         <viewControllerLayoutGuide type="bottom" id="KqO-Ok-zsR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KWn-dO-dme" customClass="Se">
+                    <view key="view" contentMode="scaleToFill" id="KWn-dO-dme">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-j1-5ug">
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-j1-5ug">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="0v9-rI-fcc" id="SLl-I1-9fS"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RdM-sp-76p">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RdM-sp-76p">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -141,6 +145,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="MAI-KD-qEs">
+                        <barButtonItem key="leftBarButtonItem" title="List" id="0g2-wG-gdV">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="Vlh-XE-ZjS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Search" id="wa2-wF-9ki">
                             <connections>
                                 <segue destination="0v9-rI-fcc" kind="show" id="hUq-bm-da6"/>
@@ -174,4 +183,8 @@
             <point key="canvasLocation" x="-206" y="722"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="B4Z-11-0HW"/>
+        <segue reference="Vlh-XE-ZjS"/>
+    </inferredMetricsTieBreakers>
 </document>

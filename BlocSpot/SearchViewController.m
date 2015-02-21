@@ -16,7 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
-
 @end
 
 @implementation SearchViewController
@@ -24,14 +23,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"Loaded search view!");
+}
 
+#pragma mark - Search Bar Delegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    NSString *searchQuery = searchBar.text;
+    [self searchRequest:searchQuery];
 }
 
 - (void) searchRequest:(NSString *) searchInfo {
     // Create new search request
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"Coffee";
+    request.naturalLanguageQuery = searchInfo;
     
     /*
       Need to make sure we have permission to use their location here
@@ -47,8 +55,6 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         self.results = response;
-        
-        // [self.tblView reloadData]
         
         // Edge cases
         if (error != nil) {
@@ -72,17 +78,6 @@
         
         [self.tableView reloadData];
     }];
-}
-
-#pragma mark - Search Bar Delegate
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    NSString *searchQuery = searchBar.text;
-    [self searchRequest:searchQuery];
 }
 
 #pragma mark - Table View Data Source
