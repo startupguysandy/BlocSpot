@@ -7,6 +7,7 @@
 //
 
 #import "SearchViewController.h"
+#import "POIData.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface SearchViewController () <CLLocationManagerDelegate>
@@ -15,6 +16,7 @@
 @property (strong, nonatomic) MKUserLocation *userLocation;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableViewCell *cell;
 
 @end
 
@@ -25,10 +27,9 @@
     // Do any additional setup after loading the view.
 }
 
-#pragma mark - Search Bar Delegate
+#pragma mark - Search Bar
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -80,25 +81,26 @@
     }];
 }
 
-#pragma mark - Table View Data Source
+#pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.results.mapItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    NSInteger row = indexPath.row;
-    
-    MKMapItem *item = self.results.mapItems[row];
-    
-    cell.textLabel.text = item.name;
-    
-//    NSLog(@"%@",item.placemark.location);
-    NSLog(@"Name: %@, Lat: %f, Long: %f", item.placemark.name, item.placemark.location.coordinate.latitude, item.placemark.location.coordinate.longitude);
+	// Setup
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"POICell" forIndexPath:indexPath];
+    MKMapItem *mapItem = self.results.mapItems[indexPath.row];
+
+    // Adding data to cells
+    cell.textLabel.text = mapItem.name;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MKMapItem *tappedItem = self.results.mapItems[indexPath.row];
+    NSLog(@"Name: %@, Lat: %f, Long: %f", tappedItem.placemark.name, tappedItem.placemark.location.coordinate.latitude, tappedItem.placemark.location.coordinate.longitude);
 }
 
 #pragma mark - Memory Warnings
