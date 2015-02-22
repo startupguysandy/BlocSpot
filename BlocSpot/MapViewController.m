@@ -42,14 +42,15 @@
     
     if (self.POI != nil)
     {
-        MKPointAnnotation * annotation = [[MKPointAnnotation alloc] init];
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         [annotation setCoordinate: self.POI.placemark.coordinate];
         [self.mapView addAnnotation: annotation];
         
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1000, 1000);
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1500, 1500);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-        [self.mapView setCenterCoordinate:annotation.coordinate];
         // [annotation setTitle:@"Title"]; // We can set the subtitle too
+    } else {
+        self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     }
 }
 
