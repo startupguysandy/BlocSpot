@@ -43,12 +43,16 @@
     if (self.POI != nil)
     {
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        [annotation setCoordinate: self.POI.placemark.coordinate];
-        [self.mapView addAnnotation: annotation];
         
+        // Set coordinates of annotation
+        [annotation setCoordinate: self.POI.placemark.coordinate];
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1500, 1500);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-        // [annotation setTitle:@"Title"]; // We can set the subtitle too
+        
+        // Set additional annotation detail
+        [annotation setTitle:self.POI.name]; // We can set the subtitle too
+        
+        [self.mapView addAnnotation: annotation]; // Place the annotation on the map
     } else {
         self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     }
