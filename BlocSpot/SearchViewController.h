@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @interface SearchViewController : UITableViewController <MKMapViewDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property MKMapItem *POI;
 
 @end

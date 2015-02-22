@@ -12,5 +12,6 @@
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) MKMapItem *POI;
 
 @end

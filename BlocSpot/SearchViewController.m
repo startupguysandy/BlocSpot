@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "POIData.h"
+#import "MapViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface SearchViewController () <CLLocationManagerDelegate>
@@ -16,7 +17,6 @@
 @property (strong, nonatomic) MKUserLocation *userLocation;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UITableViewCell *cell;
 
 @end
 
@@ -84,6 +84,7 @@
 #pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    // Return number of rows relative to how many results are coming back from the search
     return self.results.mapItems.count;
 }
 
@@ -99,8 +100,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MKMapItem *tappedItem = self.results.mapItems[indexPath.row];
-    NSLog(@"Name: %@, Lat: %f, Long: %f", tappedItem.placemark.name, tappedItem.placemark.location.coordinate.latitude, tappedItem.placemark.location.coordinate.longitude);
+    // Pass the whole mapItem object
+    self.POI = self.results.mapItems[indexPath.row];
+    
+    [self performSegueWithIdentifier:@"mapSegue" sender:self.view];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MapViewController *mapVC = segue.destinationViewController;
+    mapVC.POI = self.POI;
 }
 
 #pragma mark - Memory Warnings

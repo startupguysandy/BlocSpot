@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "SearchViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
@@ -31,25 +32,25 @@
 	// Start Updating location
     [self.locationManager startUpdatingLocation];
     
-    // Set the mapView delegate as itself
+    // Set the mapView delegate as itself and disable user tracking
     self.mapView.delegate = self;
-    
-    // PLACEHOLDER: Place a single pin
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:CLLocationCoordinate2DMake(+37.32241189, -122.03468074)];
-    [annotation setTitle:@"Title"]; //You can set the subtitle too
-    [self.mapView addAnnotation:annotation];
+    self.mapView.userTrackingMode = MKUserTrackingModeNone;
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-    // Set the region based on where the user is and zoom in
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 1000, 1000);
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear: animated];
     
-//    Can get this working with the code I had in this file from "Create new search request" comment down
-//    https://github.com/startupguysandy/BlocSpot/blob/4e0f71d2ffeb524890ad2148a2b5bade5b55ec0b/BlocSpot/MapViewController.m
-    
+    if (self.POI != nil)
+    {
+        MKPointAnnotation * annotation = [[MKPointAnnotation alloc] init];
+        [annotation setCoordinate: self.POI.placemark.coordinate];
+        [self.mapView addAnnotation: annotation];
+        
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1000, 1000);
+        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+        [self.mapView setCenterCoordinate:annotation.coordinate];
+        // [annotation setTitle:@"Title"]; // We can set the subtitle too
+    }
 }
 
 - (void)didReceiveMemoryWarning {
