@@ -95,6 +95,9 @@
     
     cell.textLabel.text = item.name;
     
+//    NSLog(@"%@",item.placemark.location);
+    NSLog(@"Name: %@, Lat: %f, Long: %f", item.placemark.name, item.placemark.location.coordinate.latitude, item.placemark.location.coordinate.longitude);
+    
     return cell;
 }
 
